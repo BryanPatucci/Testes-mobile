@@ -19,26 +19,36 @@ function autoplay(){0
 //calculadora de imc
 function calcIMC(){
   var altura = document.imc.altura.value;
-  var peso = document.imc.altura.value;
-  var sexo = document.imc.sexo.value;
+  var peso = document.imc.peso.value;
 
   var quadrado = (altura * altura);
 
   var calculo = (peso/quadrado);
 
   if (calculo < 18.5){
-    M.toast({html: "Voce esta magro, seu IMC é: " + calculo});
+    alert("Voce esta magro, seu IMC é: " + calculo);
   }
   else if (calculo >= 18.5 && calculo < 24.9){
-    M.toast({html: "Voce esta normal, seu IMC é: " + calculo});
+    alert("Voce esta normal, seu IMC é: " + calculo);
   }
   else if (calculo >= 25 && calculo < 39.9){
-    M.toast({html: "Voce esta obeso, seu IMC é: " + calculo});
+    alert("Voce esta obeso, seu IMC é: " + calculo);
   }
   else if (calculo > 40){
-    M.toast({html: "Voce esta com obesidade gravissima, seu IMC é: " + calculo});
+    alert("Voce esta com obesidade gravissima, seu IMC é: " + calculo);
   }
 }
+
+//local
+$(document).on("click", "#botao", function(){
+  L.mapquest.key = 'ZwXIxS30jRGGr2LAN5dA4dAms5Lsw5Rb';
+
+  L.mapquest.map('map', {
+    center: [-24.1226656,-46.6784699],
+    layers: L.mapquest.tileLayer('map'),
+    zoom:17
+  });
+});
 
 //alert
 function alerta(){
@@ -46,6 +56,6 @@ function alerta(){
 }
 
 //sair
-$(document).on("click","fechar",function exitFromApp(){
+$(document).on("click","#fechar",function exitFromApp(){
   navigator.app.exitApp();
 });
